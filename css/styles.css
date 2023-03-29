@@ -1,0 +1,96 @@
+
+body {
+    margin: 0;
+}
+
+/*Logo CSS*/
+
+/*Menu CSS*/
+
+.navbar {
+
+    background-color: #0a74d0;
+    min-height: 85px;
+ 
+    
+}
+
+.navbar nav{
+
+    padding-left: 1%;
+    padding-right: 0;
+    float: right;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.navbar nav a:hover {
+    color: gray;
+}
+
+/*Log in CSS*/
+
+
+
+
+
+/*Footer CSS*/
+
+.footer {
+
+    background-color: #0a74d0;
+    height: 120px;
+    /* width: 100%; */
+    position: fixed;
+    bottom: 0;
+
+
+}
+
+.footer p {
+
+    text-decoration: none;
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+
+}
+
+.footer a {
+
+    text-decoration: none;
+    color: white;
+
+}
+
+.footer a:hover {
+    color: lightgray;
+}
+
+.botnav {
+    display: table;
+    margin: auto;
+}
+
+.grayscale {
+
+    background-color: lightgray;
+    min-height: 100%;
+}
+
+/* NEED TO COME BACK TO THE GRAYSCALE THING*/
+
+.btnsub {
+    float: right;
+}
+
