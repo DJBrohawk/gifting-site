@@ -13,12 +13,12 @@
   <meta property="og:type" content="website">
   <meta property="og:description" content="A site for helping pick out gifts for your friends.">
 
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="account icon" href="images/acct.png">
 
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link href="public/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="public/css/styles.css">
 </head>
 
 
@@ -28,16 +28,16 @@
 
   <!-- Nav menu here-->
 <div class="container-fluid navbar" height="80px">
-<a href="index.html" class="logo"><img src="logo.png" height="80px" width="324px"></a>
+<a href="index.php" class="logo"><img src="images/logo.png" height="80px" width="324px"></a>
 
 <nav id="mainnav">
 
-  <a href="browse.html">Browse For Items</a>
-  <a href="friendLists.html">Manage Friend List</a>
-  <a href="contactUs.html">Contact Us</a>
-  <a href="about.html">About</a>
-  <a href="howToUse.html">How to Use This Site</a>
-  <a href="logIn.html" id="login">Log In</a>
+  <a href="html/browse.html">Browse For Items</a>
+  <a href="html/friendLists.html">Manage Friend List</a>
+  <a href="html/contactUs.html">Contact Us</a>
+  <a href="html/about.html">About</a>
+  <a href="html/howToUse.html">How to Use This Site</a>
+  <a href="html/logIn.html" id="login">Log In</a>
   
   </nav>
 
@@ -118,9 +118,9 @@ Probably by storing the account ID in the session state, and then querying the d
       <p>This site is for demonstration purposes only.</p>
       
       <span class="botnav">
-      <a href="privacyPolicy.html">Privacy Policy</a> |
-      <a href="termsOfUse.html">Terms of Use</a> |
-      <a href="careers.html">Careers</a>
+      <a href="html/privacyPolicy.html">Privacy Policy</a> |
+      <a href="html/termsOfUse.html">Terms of Use</a> |
+      <a href="html/careers.html">Careers</a>
       <span>
 
 
