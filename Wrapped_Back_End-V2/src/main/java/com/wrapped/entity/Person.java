@@ -29,7 +29,7 @@ public class Person {
     private Item itemAttachedId;
 
     @Column(name = "relationship")
-    private String relationsip;
+    private String relationship;
 
     public Person() {
     }
@@ -40,7 +40,7 @@ public class Person {
         this.lastName = lastName;
         this.userAttached = userAttached;
         this.itemAttachedId = itemAttachedId;
-        this.relationsip = relationsip;
+        this.relationship = relationsip;
     }
 
     public int getId() {
@@ -83,12 +83,12 @@ public class Person {
         this.itemAttachedId = itemAttachedId;
     }
 
-    public String getRelationsip() {
-        return relationsip;
+    public String getRelationship() {
+        return relationship;
     }
 
-    public void setRelationsip(String relationsip) {
-        this.relationsip = relationsip;
+    public void setRelationship(String relationship) {
+        this.relationship = relationship;
     }
 
     @Override
@@ -99,7 +99,7 @@ public class Person {
                 ", lastName='" + lastName + '\'' +
                 ", userAttached=" + userAttached +
                 ", itemAttachedId=" + itemAttachedId +
-                ", relationsip='" + relationsip + '\'' +
+                ", relationsip='" + relationship + '\'' +
                 '}';
     }
 }

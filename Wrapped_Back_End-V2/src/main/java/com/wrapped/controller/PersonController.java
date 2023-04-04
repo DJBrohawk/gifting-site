@@ -95,7 +95,7 @@ public class PersonController {
         updateItemAssociatedWithPerson.setItemName(person.getItemAttachedId().getItemName());
         System.out.println(updateItemAssociatedWithPerson);
 //        updatePerson.setItemAttachedId();
-        updatePerson.setRelationsip(person.getRelationsip());
+        updatePerson.setRelationship(person.getRelationship());
         itemRepository.save(updateItemAssociatedWithPerson);
         personRepository.save(updatePerson);
         return new ResponseEntity<>(HttpStatus.OK);
