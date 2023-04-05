@@ -6,7 +6,7 @@ document.addEventListener("load", getAllPeople()); //good
 document.addEventListener("load", getPeopleByUserId({id: 3})); //good, with static variable
 document.addEventListener("load", getItemById({id: 1}));
 document.addEventListener("load", getAllUsers()); //good
-document.addEventListener("load", getPersonById({id: 8}));
+document.addEventListener("load", getPersonById({id: 2}));
 
 
 //using the testBtn id
@@ -37,12 +37,41 @@ document.addEventListener("load", getPersonById({id: 8}));
 //                     password: "password"}) //good, for static information
 //     });
 
-document.getElementById("testBtn").addEventListener("click", 
+// document.getElementById("testBtn").addEventListener("click", 
 
+//     function(){
+
+//     updateUser({id: 5, firstName: "Fake Test", lastName: "Lies", email: "updated@lol.net", password: "password"});
+
+//     });
+
+//needed params...
+//firstName, lastName
+//userAttached - a key that has a JSON object with the id, first/last, email/password of the logged in user value, not just one value
+//itemAttachedId - a JSON object with id and itemName
+//relationship
+
+    document.getElementById("testBtn").addEventListener("click", 
     function(){
+        savePerson({
+            firstName: "TestPerson",
+            lastName: "TestPersonLast",
+            userAttached: {
+                id: 3,
+                firstName: "Todd",
+                lastName: "Bonzalez",
+                email: "ToddBonz@gmail.com",
+                password: "TheBonz123"
+            },
+            itemAttached: {
+                id: 1,
+                itemName: "Basketball"
+            },
+            relationship: "Test Friend"
 
-    updateUser({id: 5, firstName: "Fake Test", lastName: "Lies", email: "updated@lol.net", password: "password"});
 
+
+        })
     });
 
 document.getElementById("testBtn").addEventListener("click", inputReceived);
