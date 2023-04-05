@@ -46,7 +46,12 @@
 
 <div class="container-fluid text-center" max-height="100%">
 
-  <h1>Friend Lists</h1><br><br>
+  <h1>Friend Lists</h1>
+  <button class="btn siteColor">Add New List</button>
+  
+  
+  
+  <br><br>
 
 </div>
 
@@ -79,16 +84,27 @@
 
   -->
 
-  <div class="container-sm" id="friendListRows">
+  <div class="container-sm" id="yourListRow">
 
-    <div class="row">
-<h1>Your List    </h1>
+    <div class="row justify-content-center">
 
-  <button type="button" class="btn btn-secondary">View List</button>
-
+      <span class="col-5 text-center">
+        <h2>Your List</h2>
+      </span>
+      <span class="col-4">
+        
+        <span class="btn-group" role="group">
+          <button type="button" class="btn btn-secondary">View List</button>
+          <button type="button" class="btn btn-danger" id="testBtn">Delete List</button>
+        </span>    
+      </span>
     </div>
 
+  </div>
 
+
+  <!--insert friend list rows here-->
+  <div class="container-sm" id="friendListRows">
 
   </div>
 
@@ -113,5 +129,6 @@
   </div>
 
   <script src="../public/js/main.js"></script>
+  <script src="../public/js/database.js"></script>
 </body>
 </html>
