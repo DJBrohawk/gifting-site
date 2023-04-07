@@ -235,22 +235,60 @@ async function getAllItems() {
 }
 
 //this function is going to be called in the modal window to add a new friend
-//it will use the saveItem and savePerson functions using data from the modal window
+//it will use the savePerson function using data from the modal window
 //and, eventually, the item data from eBay, but for now we don't have that
-//this is going to pass in the button clicked, but we're going to select the parent div
-//and the inner text within that parent div to get the item name
-async function createNewFriend(btn){
 
+async function createNewFriend(){
+
+
+    console.log("hello");
     //get data from modal window
 
-    const fname = document.getElementById("friendFname");
-    const lname = document.getElementById("friendLname");
-    const relationship = document.getElementById("friendRelationship");
-    const iname = document.getElementById("itemName");
-
+    const fname = document.getElementById("friendFname").value;
+    const lname = document.getElementById("friendLname").value;
+    const rship = document.getElementById("friendRelationship").value;
+    const userId = sessionStorage.getItem("id");
+    const iname = sessionStorage.getItem("itemName");
+    
     
 
+    //item name will be pulled in by selecting the button and then getting the inner text of its previous sibling
+    //***NOTE:**** If the HTML in this changes, this may break!!
 
+    if(fname.trim() == '' || lname.trim() == '' || rship.trim() == '' || iname.trim() == ''){
+
+        document.getElementById("modalError").innerText = "Error: One of the required fields is missing. Please fill out all fields.";
+        return;
+
+
+    }
+
+    console.log(iname);
+
+    await savePerson({
+        firstName: fname,
+         lastName: lname,
+         userAttached: {id: userId},
+         itemAttachedId: {itemName: iname},
+          relationship: rship
+         })
+
+
+}
+
+async function modalLoad(){
+    document.getElementById("friendItemName").value = sessionStorage.getItem("itemName");
+}
+
+//this is going to pass in the button clicked, but we're going to select the parent div
+//and the inner text within that parent div to get the item name
+async function saveItemNameToStorage(btn){
+
+    let itemText = btn.parentElement.firstElementChild;
+
+    let iname = itemText.innerText.trim();
+
+    sessionStorage.setItem("itemName", iname);
 }
 
 
@@ -444,7 +482,7 @@ async function updatePerson(){}
 //firstName, lastName
 //userAttached - a key that has a JSON object with the id, first/last, email/password of the logged in user value, not just one value
 //itemAttachedId - a JSON object with id and itemName
-//relationsip - spelled incorrectly, for now.
+//relationship
 async function savePerson(params){
 
     const response = await fetch('http://localhost:8080/savePerson/', {
