@@ -60,7 +60,77 @@
   image of happy couple here
 
 rotating images of items -  size dependent on window size-->
+<div class="container-sm text-center">
 
+  <div class="row">
+
+    <span class="col" id="item1">
+      <img src="../images/1.png" class="homeImage"><br>Item 1<br>
+      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save</button>
+    </span>
+
+    <span class="col" id="item2">
+
+      <img src="../images/2.png" class="homeImage"><br>Item 2<br>
+      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save</button>
+
+    </span>
+
+    <span class="col" id="item3">
+
+      <img src="../images/3.png" class="homeImage"><br>Item 3<br>
+      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save</button>
+
+    </span>
+
+    <span class="col" id="item4">
+
+      <img src="../images/4.png" class="homeImage"><br>Item 4<br>
+      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save</button>
+      
+    </span>
+
+  </div>
+
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Save an item to a friend!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="return false">
+          <div class="mb-3">
+            <label for="friendFname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="friendFname" required>
+          </div>
+          <div class="mb-3">
+            <label for="friendLname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="friendLname" required>
+          </div>
+          <div class="mb-3">
+            <label for="friendRelationship" class="form-label">Relationship</label>
+            <input type="text" class="form-control" id="friendRelationship" required>
+          </div>
+          <div class="mb-3">
+            <label for="itemName" class="form-label">Item Name</label>
+            <input type="text" class="form-control" id="itemName" required>
+          </div>
+                
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!--footer here-->
   <div class="container-fluid footer">
@@ -81,7 +151,29 @@ rotating images of items -  size dependent on window size-->
 
   </div>
 
+
   <script src="../public/js/main.js"></script>
   <script src="../public/js/database.js"></script>
+  <script src="../public/js/bootstrap.js"></script>
+  <script>
+
+//this is not working for some reason. tomorrow problem.
+//past me says "You may have to iterate through each one."
+document.addEventListener("DOMContentLoaded", function(){
+
+
+
+  if(sessionStorage.getItem("loggedIn") == "false") {
+
+    const btn = document.querySelectorAll("btn.saveBtn");
+    btn.classList.toggle("hideBtn");
+
+  }
+
+
+})
+
+
+  </script>
 </body>
 </html>

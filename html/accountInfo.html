@@ -53,19 +53,29 @@
     <h1 class="text-center">Account Info</h1><br>
     <form>
       <div class="mb-3">
-        <label for="contactfname" class="form-label">First Name</label>
-        <input type="text" class="form-control" id="contactfname">
+        <label for="accountFname" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="accountFname">
       </div>
       <div class="mb-3">
-        <label for="contactlname" class="form-label">Last Name</label>
-        <input type="text" class="form-control" id="contactlname">
+        <label for="accountLname" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="accountLname">
       </div>
       <div class="mb-3">
-        <label for="contactemail" class="form-label">Email Address</label>
-        <input type="email" class="form-control" id="email">
+        <label for="accountEmail" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="accountEmail">
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
-      <button type="submit" class="btn btn-secondary">Save</button>
+      <div class="mb-3">
+        <label for="accountPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="accountPassword">
+      </div>
+      <div class="mb-3">
+        <label for="accountPasswordConfirm" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="accountPasswordConfirm">
+      </div>
+      <div class="errorMessage" id="accountError"></div>
+      <button type="button" class="btn btn-secondary" onclick="accountInfoSave()">Save</button>
+      <a href="../index.html"><button type="button" class="btn btn-danger">Log Out</button></a>
     </form>
 
   </div>
@@ -96,5 +106,16 @@
 
   <script src="../public/js/main.js"></script>
   <script src="../public/js/database.js"></script>
+  <script src="../public/js/bootstrap.js"></script>
+  <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  accountInfoLoad();
+
+});
+
+  </script>
+  
 </body>
 </html>

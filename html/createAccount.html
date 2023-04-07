@@ -51,27 +51,37 @@
     
   <div class="col">
     <h1 class="text-center">Account Info</h1><br>
-    <form>
+    <form onsubmit="return false">
       <div class="mb-3">
-        <label for="contactfname" class="form-label">First Name</label>
-        <input type="text" class="form-control" id="contactfname">
+        <label for="createFname" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="createFname" required>
       </div>
       <div class="mb-3">
-        <label for="contactlname" class="form-label">Last Name</label>
-        <input type="text" class="form-control" id="contactlname">
+        <label for="createLname" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="createLname" required>
       </div>
       <div class="mb-3">
-        <label for="contactemail" class="form-label">Email Address</label>
-        <input type="email" class="form-control" id="email">
+        <label for="createEmail" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="createEmail" required>
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
+      <div class="mb-3">
+        <label for="createPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="createPassword" required>
+      </div>
+      <div class="mb-3">
+        <label for="createPasswordConfirm" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="createPasswordConfirm" required>
+        <div id="passwordHelp" class="form-text">Passwords must match.</div>
+      </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="" id="accountFlexCheck">
+        <label class="form-check-label" for="accountFlexCheck">
           I have read and agree to the <a href="privacyPolicy.html">Privacy Policy</a> and <a href="termsOfUse.html">Terms of Use</a>.
         </label>
       </div>
-      <button type="submit" class="btn btn-secondary">Submit</button>
+      <div class="errorMessage" id="createError"></div>
+      <button type="submit" class="btn btn-secondary" onclick="createAccount()">Submit</button>
     </form>
 
   </div>
@@ -102,5 +112,6 @@
 
   <script src="../public/js/main.js"></script>
   <script src="../public/js/database.js"></script>
+  <script src="../public/js/bootstrap.js"></script>
 </body>
 </html>

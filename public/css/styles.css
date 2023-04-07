@@ -99,3 +99,17 @@ body {
     color: white;
 }
 
+.errorMessage {
+    color: red;
+    font-size: 12px;
+}
+
+.homeImage {
+    height: 100px;
+    width: 100px;
+}
+
+.hideBtn {
+    display:none;
+    visibility: hidden;
+}

@@ -28,7 +28,7 @@
 
   <!-- Nav menu here-->
 <div class="container-fluid navbar" height="80px">
-<a href="index.php" class="logo"><img src="images/logo.png" height="80px" width="324px"></a>
+<a href="index.html" class="logo"><img src="images/logo.png" height="80px" width="324px"></a>
 
 <nav id="mainnav">
 
@@ -129,7 +129,8 @@ Probably by storing the account ID in the session state, and then querying the d
 
   <script>
 
-  sessionStorage.setItem("boo", "true");
+  sessionStorage.clear();
+  sessionStorage.setItem("loggedIn", "false");
 
   </script>
 </body>

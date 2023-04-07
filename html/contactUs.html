@@ -19,7 +19,7 @@
 
   <link href="../public/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/styles.css">
-</head>
+
 
 </head>
 
@@ -52,26 +52,26 @@
   <div class="col">
     <h1 class="text-center">Contact Us!</h1><br>
     <h5 class="text-center">Have a question, comment, or concern? Contact us using the form below!</h5><br><br>
-    <form>
+    <form method="post">
       <div class="mb-3">
-        <label for="contactfname" class="form-label">First Name</label>
-        <input type="text" class="form-control" id="contactfname">
+        <label for="contactFname" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="contactFname">
       </div>
       <div class="mb-3">
-        <label for="contactlname" class="form-label">Last Name</label>
-        <input type="text" class="form-control" id="contactlname">
+        <label for="contactLname" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="contactLname">
       </div>
       <div class="mb-3">
-        <label for="contactemail" class="form-label">Email Address</label>
-        <input type="email" class="form-control" id="email">
+        <label for="contactEmail" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="contactEmail">
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
       <div class="mb-3">
-        <label for="message" class="form-label">Message</label>
-        <textarea class="form-control" id="message" rows="3"></textarea>
+        <label for="contactMessage" class="form-label">Message</label>
+        <textarea class="form-control" id="contactMessage" rows="3"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-secondary">Submit</button>
+      <button type="button" class="btn btn-secondary" onclick="sendEmail()"">Submit</button>
     </form>
 
   </div>
@@ -109,5 +109,30 @@ rotating images of items -  size dependent on window size-->
   </div>
   <script src="../public/js/main.js"></script>
   <script src="../public/js/database.js"></script>
+  <script src="../public/js/bootstrap.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script type="text/javascript">
+    function sendEmail() {
+      
+      try{
+                    Email.send({
+              Host : "sandbox.smtp.mailtrap.io",
+              Username : "4fc99d57f9ad91",
+              Password : "7a51fdac8e558e",
+              To : document.getElementById("contactEmail").value,
+              From : "noreplayatall.thanks@gmail.com",
+              Subject : "This is the subject",
+              Body : "And this is the body"
+          }).then(
+            message => alert(message)
+          );
+      }catch (err) {
+
+        console.error(err);
+
+      }
+    }
+  </script>
+ 
 </body>
 </html>
