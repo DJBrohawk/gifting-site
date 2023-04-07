@@ -65,29 +65,23 @@ rotating images of items -  size dependent on window size-->
   <div class="row">
 
     <span class="col" id="item1">
-      <img src="../images/1.png" class="homeImage"><br>Item 1<br>
-      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save</button>
+      <div><img src="../images/1.png" class="homeImage"><br>Item 1</div>
+      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()">Save</button>
     </span>
 
     <span class="col" id="item2">
-
-      <img src="../images/2.png" class="homeImage"><br>Item 2<br>
-      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save</button>
-
+      <div><img src="../images/2.png" class="homeImage"><br>Item 2</div>
+      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()">Save</button>
     </span>
 
     <span class="col" id="item3">
-
-      <img src="../images/3.png" class="homeImage"><br>Item 3<br>
-      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save</button>
-
+      <div><img src="../images/3.png" class="homeImage"><br>Item 3</div>
+      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()">Save</button>
     </span>
 
     <span class="col" id="item4">
-
-      <img src="../images/4.png" class="homeImage"><br>Item 4<br>
-      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save</button>
-      
+      <div><img src="../images/4.png" class="homeImage"><br>Item 4</div>
+      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()">Save</button>
     </span>
 
   </div>
@@ -104,7 +98,7 @@ rotating images of items -  size dependent on window size-->
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form onsubmit="return false">
+        <form>
           <div class="mb-3">
             <label for="friendFname" class="form-label">First Name</label>
             <input type="text" class="form-control" id="friendFname" required>
@@ -118,16 +112,17 @@ rotating images of items -  size dependent on window size-->
             <input type="text" class="form-control" id="friendRelationship" required>
           </div>
           <div class="mb-3">
-            <label for="itemName" class="form-label">Item Name</label>
-            <input type="text" class="form-control" id="itemName" required>
+            <label for="friendItemName" class="form-label">Item Name</label>
+            <input type="text" class="form-control" id="friendItemName" required>
           </div>
-                
+          <div class="errorMessage" id="modalError"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" onclick="createNewFriend()">Save</button>
+          </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
+     
     </div>
   </div>
 </div>
