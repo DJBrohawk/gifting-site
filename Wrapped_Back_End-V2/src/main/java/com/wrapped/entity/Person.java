@@ -34,13 +34,13 @@ public class Person {
     public Person() {
     }
 
-    public Person(int id, String firstName, String lastName, User userAttached, Item itemAttachedId, String relationsip) {
+    public Person(int id, String firstName, String lastName, User userAttached, Item itemAttachedId, String relationship) {
         Id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userAttached = userAttached;
         this.itemAttachedId = itemAttachedId;
-        this.relationship = relationsip;
+        this.relationship = relationship;
     }
 
     public int getId() {
@@ -99,7 +99,7 @@ public class Person {
                 ", lastName='" + lastName + '\'' +
                 ", userAttached=" + userAttached +
                 ", itemAttachedId=" + itemAttachedId +
-                ", relationsip='" + relationship + '\'' +
+                ", relationship='" + relationship + '\'' +
                 '}';
     }
 }
