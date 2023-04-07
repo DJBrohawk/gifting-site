@@ -61,8 +61,10 @@
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password">
       </div>
+      <div class="errorMessage" id="loginError"></div>
       
-      <button type="submit" class="btn btn-secondary">Submit</button>
+      <button type="button" class="btn btn-secondary" onclick="login()">Submit</button>
+      <a href="createAccount.html"><button type="button" class="btn siteColor">Create Account</button></a>
     </form>
 
   </div>
@@ -93,5 +95,6 @@
 
   <script src="../public/js/main.js"></script>
   <script src="../public/js/database.js"></script>
+  <script src="../public/js/bootstrap.js"></script>
 </body>
 </html>

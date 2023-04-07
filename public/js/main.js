@@ -37,34 +37,22 @@
 
 
 function login() {
-console.log("SURPRISE BOO");
+// 1
+
+    
 
 
-if (sessionStorage.getItem("boo") === 'false'){
-
-sessionStorage.setItem("boo", "true");
-
-} else if (sessionStorage.getItem("boo") === 'true') {
-
-sessionStorage.setItem("boo", "false");
-}
-
-
-    console.log(boo);
 
 }
 
 document.addEventListener("DOMContentLoaded", () => {
 
 
-    if (sessionStorage.getItem("boo") === 'false') {
+    if (sessionStorage.getItem("loggedIn") === 'false') {
 
         console.log("helpsda");
         document.getElementById("mainnav").innerHTML = `
         
-       
-
-           
         <a href="browse.html">Browse For Items</a>
         <a href="friendLists.html">Manage Friend List</a>
         <a href="contactUs.html">Contact Us</a>
@@ -74,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
      
     
-    } else if (sessionStorage.getItem("boo") === 'true') {
+    } else if (sessionStorage.getItem("loggedIn") === 'true') {
 
         console.log("help");
    
@@ -85,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <a href="contactUs.html">Contact Us</a>
         <a href="about.html">About</a>
         <a href="howToUse.html">How to Use This Site</a>
-        <a href="accountInfo.html" class="acct"><img src="acct.png" height="40px" width="40px"></a>`;
+        <a href="accountInfo.html" class="acct"><img src="../images/acct.png" height="40px" width="40px"></a>`;
      
 
     }
