@@ -220,20 +220,6 @@ async function deleteFriend(btn){
 
 }
 
-//start of back end code functions
-//all of these should be named the same as the functions in the back end code********************************
-
-//may not be used
-async function getAllItems() {
-
-    const response = await fetch("http://localhost:8080/getAllItems");
-    const jsonData = await response.json();
-    console.log(jsonData);
-    return jsonData;
-    
-
-}
-
 //this function is going to be called in the modal window to add a new friend
 //it will use the savePerson function using data from the modal window
 //and, eventually, the item data from eBay, but for now we don't have that
@@ -290,6 +276,22 @@ async function saveItemNameToStorage(btn){
 
     sessionStorage.setItem("itemName", iname);
 }
+
+
+//start of back end code functions
+//all of these should be named the same as the functions in the back end code********************************
+
+//may not be used
+async function getAllItems() {
+
+    const response = await fetch("http://localhost:8080/getAllItems");
+    const jsonData = await response.json();
+    console.log(jsonData);
+    return jsonData;
+    
+
+}
+
 
 
 
