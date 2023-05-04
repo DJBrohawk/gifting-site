@@ -45,11 +45,6 @@
 
 <div class="container-fluid" max-height="100%">
 
-  
-
-
-
-
 </div>
 
 
@@ -65,24 +60,16 @@ rotating images of items -  size dependent on window size-->
   <div class="row">
 
     <span class="col" id="item1">
-      <div><img src="../images/1.png" class="homeImage"><br>Item 1</div>
-      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()">Save</button>
     </span>
 
     <span class="col" id="item2">
-      <div><img src="../images/2.png" class="homeImage"><br>Item 2</div>
-      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()">Save</button>
     </span>
 
     <span class="col" id="item3">
-      <div><img src="../images/3.png" class="homeImage"><br>Item 3</div>
-      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()">Save</button>
-    </span>
+   </span>
 
     <span class="col" id="item4">
-      <div><img src="../images/4.png" class="homeImage"><br>Item 4</div>
-      <button type="button" class="btn btn-secondary saveBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()">Save</button>
-    </span>
+   </span>
 
   </div>
 
@@ -149,24 +136,29 @@ rotating images of items -  size dependent on window size-->
 
   <script src="../public/js/main.js"></script>
   <script src="../public/js/database.js"></script>
+  <script src="../public/js/ebay.js"></script>
   <script src="../public/js/bootstrap.js"></script>
   <script>
 
 //this is not working for some reason. tomorrow problem.
 //past me says "You may have to iterate through each one."
-document.addEventListener("DOMContentLoaded", function(){
+//future me thanks past me because this was indeed the answer
+window.onload = function(){
 
-
+  console.log("YO");
 
   if(sessionStorage.getItem("loggedIn") == "false") {
 
-    const btn = document.querySelectorAll("btn.saveBtn");
-    btn.classList.toggle("hideBtn");
+    const btn = document.querySelectorAll(".saveBtn");
+    console.log(btn[0].classList);
+
+    btn.foreach(element => element.classList.toggle("hideBtn"));
+    
 
   }
 
 
-})
+}
 
 
   </script>

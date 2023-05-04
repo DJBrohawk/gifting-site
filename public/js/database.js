@@ -8,6 +8,9 @@
 // document.addEventListener("load", getAllUsers()); //good
 // document.addEventListener("load", getPersonById({id: 2}));//good, with static variable
 
+//I didn't want to add this, but I can only deal with pending promises for so long
+let randEbayWord = '';
+
 
 async function inputReceived(){
     console.log("Input received!");
@@ -58,8 +61,6 @@ async function createAccount(){
 
 
 }
-
-
 
 async function login(){
 
@@ -278,6 +279,9 @@ async function saveItemNameToStorage(btn){
 }
 
 
+
+
+//********************************************************************************** */
 //start of back end code functions
 //all of these should be named the same as the functions in the back end code********************************
 
@@ -291,9 +295,6 @@ async function getAllItems() {
     
 
 }
-
-
-
 
 
 //saving an item to a list, will need to get some kind of list ID in there potentially
