@@ -8,8 +8,7 @@
 // document.addEventListener("load", getAllUsers()); //good
 // document.addEventListener("load", getPersonById({id: 2}));//good, with static variable
 
-//I didn't want to add this, but I can only deal with pending promises for so long
-let randEbayWord = '';
+
 
 
 async function inputReceived(){
@@ -158,6 +157,8 @@ async function friendListLoad(){
 
     console.log(sessionStorage.getItem("jsonStorage"));
 
+    
+
     if(jsonData.length <= 0){
 
         document.getElementById("friendListRows").innerHTML = `It looks like you don't have any friends! Add some friends now!`;
@@ -178,23 +179,38 @@ async function friendListLoad(){
         jsonData.forEach((ele) => {
 
             console.log(ele['id']);
+            console.log(ele['itemAttachedId']['itemName']);
+            
+           
+            const ebayData = ebayFriendsList(ele['itemAttachedId']['itemName']).then((data) => {
+                
+                
+                console.log(data);
 
-            document.getElementById("friendListRows").innerHTML += `
+                document.getElementById("friendListRows").innerHTML += `
             
             
-            <div class="row justify-content-center">
-            <span class="col-5 text-center">
-              <h2>`+ ele['firstName'] + ' ' + ele['lastName'] + `</h2>
-            </span>
-            <span class="col-4 text-center" id="itemText">`+ ele['itemAttachedId']['itemName'] +`</span>
-            <span class="col-2">
-                <button type="submit" class="btn btn-danger" id="` + ele['id'] + `" onclick=deleteFriend(this)>Delete Item</button>
-            </span>
-          </div>
-            <br>
+                <div class="row justify-content-center align-items-center">
+                <span class="col-3 text-center">
+                  <h2>`+ ele['firstName'] + ' ' + ele['lastName'] + `</h2>
+                </span>
+              <span class="col-1 justify-content-center"><img src="`+ data['image'].imageUrl + `" height="50px" width="50px"></span>
+                <span class="col-4 text-center ebayItem" id="itemText">
+                <a href="` + data.itemWebUrl + `" class="link-opacity-50-hover" target="_blank">`+ data.title +`</a>
+                </span>
+                <span class="col-2">
+                    <button type="submit" class="btn btn-danger" id="` + ele['id'] + `" onclick=deleteFriend(this)>Delete Item</button>
+                </span>
+              </div>
+                <br>
+                
+                
+                `
             
             
-            `
+            });
+
+           
 
                 //you're going to come back to this tomorrow and be thankful past you wrote this:
 
@@ -235,7 +251,12 @@ async function createNewFriend(){
     const lname = document.getElementById("friendLname").value;
     const rship = document.getElementById("friendRelationship").value;
     const userId = sessionStorage.getItem("id");
-    const iname = sessionStorage.getItem("itemName");
+    let item = JSON.parse(sessionStorage.getItem("itemToSave"));
+    let iname = item.itemId;
+    
+    
+    //deprecated, iname going to the database is now the e-bay id for friend list querying
+    //const iname = sessionStorage.getItem("itemName");
     
     
 
@@ -276,6 +297,45 @@ async function saveItemNameToStorage(btn){
     let iname = itemText.innerText.trim();
 
     sessionStorage.setItem("itemName", iname);
+
+    //this is the save button, which has a value directly related to the slot in the itemArr array
+    //in Session Storage
+
+    //we pull the value from the button, and pull that item from itemArr
+
+    let btnValue = btn.value;
+
+    console.log(btn.value);
+
+    let itemArr = JSON.parse(sessionStorage.getItem("itemArr"));
+
+    console.log(itemArr);
+
+    let item = itemArr[btnValue];
+
+    console.log(item.itemId);
+
+    //if I've done this right, this is the EbayItem object we want to use to save the ID to the database
+    //with savePerson
+
+    //in case future me forgets, need to stringify json going in, parse json coming out of session storage
+    sessionStorage.setItem("itemToSave", JSON.stringify(item));
+
+    //and then in manage friend list page, we run a singular get single item query using the ids for each item
+
+
+
+
+}
+
+
+async function ebayFriendsList(param){
+
+    const response = await fetch("http://localhost:3500/ebay/friendsList/?" + new URLSearchParams("q=" + param));
+    const jsonData = await response.json();
+
+    return jsonData;
+
 }
 
 

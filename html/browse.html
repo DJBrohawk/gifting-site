@@ -101,9 +101,72 @@ Presumably, we will modify the innerHTML of this with whatever is necessary once
     </div>
 
   </div>
+<br>
+  <div class="row">
 
+    <div class="col" id="item5">
+
+    </div>
+
+    <div class="col" id="item6">
+
+
+    </div>
+
+    <div class="col" id="item7">
+
+
+    </div>
+
+    <div class="col" id="item8">
+
+
+    </div>
+
+  </div>
+
+  <br><br><br><br><br><br>
 
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Save an item to a friend!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="friendFname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="friendFname" required>
+          </div>
+          <div class="mb-3">
+            <label for="friendLname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="friendLname" required>
+          </div>
+          <div class="mb-3">
+            <label for="friendRelationship" class="form-label">Relationship</label>
+            <input type="text" class="form-control" id="friendRelationship" required>
+          </div>
+          <div class="mb-3">
+            <label for="friendItemName" class="form-label">Item Name</label>
+            <input type="text" class="form-control" id="friendItemName" required>
+          </div>
+          <div class="errorMessage" id="modalError"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" onclick="createNewFriend()">Save</button>
+          </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
 
   <!--footer here-->
   <div class="container-fluid footer">

@@ -29,14 +29,51 @@ async function ebaySearch(btn){
     const searchBox = document.getElementById("browseText");
     param = searchBox.value;
 
-    const response = await (await fetch("http://localhost:3500/ebay/?" + new URLSearchParams("q=" + param))).json().then(
+    //I think VSCode put the first (second?) await there on its own and I'm scared to remove it because this works XD
+    const response = await (await fetch("http://localhost:3500/ebay/?" + new URLSearchParams("q=" + param + "&limit=8") )).json().then(
         function(result) {
+
+            sessionStorage.setItem("itemArr", "");
+            //some variables - itemArr is for 
+            //btnClass is to set the class of the save button so that if you're not logged in, it won't appear
+            //counter is for assigning to a save button value so that I can pluck the item from the itemArr
+            //array and pass it to the Java back end
+            itemArr = [];
+            let btnClass = '';
+            let counter = 0;
+
+            if(sessionStorage.getItem("loggedIn") == "false")
+                btnClass = "hideBtn";
+                else
+                btnClass = "saveBtn";
 
             console.log(result);
 
             console.log(result['itemSummaries']); //this works, mercifully
 
-            return result; //this should, theoretically, be the JSON data we want
+             //for now, this is 4 - set in the ebayController.js
+             for (let i = 0; i < result['itemSummaries'].length; i++){
+
+                //get each item returned from ebay
+                const item = document.getElementById("item" + (i+1));
+                //insert each item into the four allotted slots
+            item.innerHTML = `<div><a href="`+ result['itemSummaries'][i].itemWebUrl +`"><img src="` + result['itemSummaries'][i]['image']['imageUrl'] + `" class="homeImage"></a><br>`+ `<a href="`+ result['itemSummaries'][i].itemWebUrl +`" class="ebayItem">` + result['itemSummaries'][i].title + `</a></div>
+            <button type="button" class="btn btn-secondary `+ btnClass + `" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()" value="` + i + `">Save</button>`
+                
+                const itemData = new EbayItem(result['itemSummaries'][i].title,
+                                            result['itemSummaries'][i].itemId,
+                                            result['itemSummaries'][i]['image']['imageUrl'],
+                                            result['itemSummaries'][i].itemHref);
+                
+                itemArr.push(itemData);
+                counter++;
+        
+            }
+
+            console.log(itemArr);
+            sessionStorage.setItem("itemArr", JSON.stringify(itemArr));
+
+            return result; 
         });
    
 }
@@ -67,7 +104,7 @@ async function ebayLoad(){
     console.log(word);
     
 
-    const response = (await fetch("http://localhost:3500/ebay/?" + new URLSearchParams("q=" + word[0]))).json().then(
+    const response = (await fetch("http://localhost:3500/ebay/?" + new URLSearchParams("q=" + word[0] + "&limit=4"))).json().then(
         function(result) {
 
             itemArr = [];
@@ -80,6 +117,8 @@ async function ebayLoad(){
                 btnClass = "saveBtn";
 
             console.log(result);
+
+            if(result.total < 4) {ebayLoad();}
 
             console.log(result['itemSummaries']); //this works, mercifully
 
@@ -97,7 +136,7 @@ async function ebayLoad(){
                 //get each item returned from ebay
                 const item = document.getElementById("item" + (i+1));
                 //insert each item into the four allotted slots
-            item.innerHTML = `<div><a href="`+ result['itemSummaries'][i].itemWebUrl +`"><img src="` + result['itemSummaries'][i]['image']['imageUrl'] + `" class="homeImage"></a><br>`+ `<a href="`+ result['itemSummaries'][i].itemWebUrl +`">` + result['itemSummaries'][i].title + `</a></div>
+            item.innerHTML = `<div><a href="`+ result['itemSummaries'][i].itemWebUrl +`"><img src="` + result['itemSummaries'][i]['image']['imageUrl'] + `" class="homeImage"></a><br>`+ `<a href="`+ result['itemSummaries'][i].itemWebUrl +`" class="ebayItem">` + result['itemSummaries'][i].title + `</a></div>
             <button type="button" class="btn btn-secondary `+ btnClass + `" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()" value="` + i + `">Save</button>`
                 
                 const itemData = new EbayItem(result['itemSummaries'][i].title,
@@ -110,7 +149,7 @@ async function ebayLoad(){
             }
 
             console.log(itemArr);
-
+            sessionStorage.setItem("itemArr", JSON.stringify(itemArr));
 
         });
 
