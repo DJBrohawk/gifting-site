@@ -198,6 +198,7 @@ async function friendListLoad(){
                 <span class="col-4 text-center ebayItem" id="itemText">
                 <a href="` + data.itemWebUrl + `" class="link-opacity-50-hover" target="_blank">`+ data.title +`</a>
                 </span>
+                <span class="col-1"><h4>$`+ data['price'].value +`</h4></span>
                 <span class="col-2">
                     <button type="submit" class="btn btn-danger" id="` + ele['id'] + `" onclick=deleteFriend(this)>Delete Item</button>
                 </span>

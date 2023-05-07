@@ -29,6 +29,9 @@ async function ebaySearch(btn){
     const searchBox = document.getElementById("browseText");
     param = searchBox.value;
 
+    const resultsText = document.getElementById("resultsText");
+    resultsText.innerHTML = `<h2>Search results for "`+ param +`"</h2>`
+
     //I think VSCode put the first (second?) await there on its own and I'm scared to remove it because this works XD
     const response = await (await fetch("http://localhost:3500/ebay/?" + new URLSearchParams("q=" + param + "&limit=8") )).json().then(
         function(result) {
@@ -58,6 +61,7 @@ async function ebaySearch(btn){
                 const item = document.getElementById("item" + (i+1));
                 //insert each item into the four allotted slots
             item.innerHTML = `<div><a href="`+ result['itemSummaries'][i].itemWebUrl +`"><img src="` + result['itemSummaries'][i]['image']['imageUrl'] + `" class="homeImage"></a><br>`+ `<a href="`+ result['itemSummaries'][i].itemWebUrl +`" class="ebayItem">` + result['itemSummaries'][i].title + `</a></div>
+            <div><h4>$`+ result['itemSummaries'][i]['price'].value + `</h4></div>
             <button type="button" class="btn btn-secondary `+ btnClass + `" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()" value="` + i + `">Save</button>`
                 
                 const itemData = new EbayItem(result['itemSummaries'][i].title,
@@ -116,20 +120,10 @@ async function ebayLoad(){
                 else
                 btnClass = "saveBtn";
 
-            console.log(result);
 
             if(result.total < 4) {ebayLoad();}
-
-            console.log(result['itemSummaries']); //this works, mercifully
-
-            console.log(result['itemSummaries'][0]);
-
-            console.log(result['itemSummaries'][0].itemId);
-
-            console.log(result['itemSummaries'][0]['image']['imageUrl']);
-
-            
-
+           
+            console.log(result);
             //for now, this is 4 - set in the ebayController.js
             for (let i = 0; i < result['itemSummaries'].length; i++){
 
@@ -137,6 +131,7 @@ async function ebayLoad(){
                 const item = document.getElementById("item" + (i+1));
                 //insert each item into the four allotted slots
             item.innerHTML = `<div><a href="`+ result['itemSummaries'][i].itemWebUrl +`"><img src="` + result['itemSummaries'][i]['image']['imageUrl'] + `" class="homeImage"></a><br>`+ `<a href="`+ result['itemSummaries'][i].itemWebUrl +`" class="ebayItem">` + result['itemSummaries'][i].title + `</a></div>
+            <div><h4>$`+ result['itemSummaries'][i]['price'].value + `</h4></div>
             <button type="button" class="btn btn-secondary `+ btnClass + `" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="saveItemNameToStorage(this);modalLoad()" value="` + i + `">Save</button>`
                 
                 const itemData = new EbayItem(result['itemSummaries'][i].title,
